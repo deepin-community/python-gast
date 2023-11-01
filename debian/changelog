@@ -1,5 +1,12 @@
-template-repository (1.0-1) unstable; urgency=medium
+python-gast (0.5.2-2) unstable; urgency=medium
 
-  * Initial release
+  * Team upload.
+  * Upload to unstable.
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Stefano Rivera <stefanor@debian.org>  Mon, 11 Oct 2021 14:40:06 -0700
+
+python-gast (0.5.2-1) experimental; urgency=medium
+
+  * Initial release (Closes: #993800)
+
+ -- Diego M. Rodriguez <diego@moreda.io>  Tue, 21 Sep 2021 03:56:24 +0200

@@ -1,0 +1,52 @@
+From: "Diego M. Rodriguez" <diego@moreda.io>
+Date: Tue, 7 Sep 2021 10:42:14 +0200
+Subject: Remove astunparse-dependent tests
+
+Remove the test that depends on astunparse, as it is currently not
+packaged into debian (but in process [1]).
+
+[1] https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=978502
+---
+ setup.py           | 1 -
+ tests/test_self.py | 9 ---------
+ 2 files changed, 10 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 50cec96..8094f2d 100644
+--- a/setup.py
++++ b/setup.py
+@@ -3,7 +3,6 @@ try:
+     from setuptools import setup
+     kw = {
+         'test_suite': 'tests',
+-        'tests_require': ['astunparse'],
+     }
+ except ImportError:
+     from distutils.core import setup
+diff --git a/tests/test_self.py b/tests/test_self.py
+index 0c131cf..2f97d63 100644
+--- a/tests/test_self.py
++++ b/tests/test_self.py
+@@ -2,8 +2,6 @@ import glob
+ import os
+ import unittest
+ 
+-import astunparse
+-
+ import gast
+ 
+ 
+@@ -25,13 +23,6 @@ class SelfTestCase(unittest.TestCase):
+             gnode = gast.parse(content)
+             compile(gast.gast_to_ast(gnode), src_py, 'exec')
+ 
+-    def test_unparse(self):
+-        for src_py in self.srcs:
+-            with open(src_py) as f:
+-                content = f.read()
+-            gnode = gast.parse(content)
+-            astunparse.unparse(gast.gast_to_ast(gnode))
+-
+ 
+ if __name__ == '__main__':
+     unittest.main()
